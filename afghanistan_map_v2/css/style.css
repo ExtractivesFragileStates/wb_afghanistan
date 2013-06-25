@@ -97,6 +97,7 @@ body > div {
     height: 100%;
     width: 100%;
     z-index: 0;
+    background: #cbc4b3; /* set background for load */
     }
 
 #branding {
@@ -110,17 +111,19 @@ body > div {
 
 #content {
 	position: absolute;
-    height: 200px;
-	width: 100%;
-	bottom: 0px;
-    background: rgb(255,255,255); /* old ie */
-    background: rgba(255,255,255,.9);
-    border-bottom: 1px solid #ccc;
-    border-top: 5px solid #333;
-    overflow-y: hidden;
+	top: 0px;
+	left: 0;
+	bottom:0;
+	width:330px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	background:rgb(250,247,243);
+	background:rgba(250,247,243,0.8);
+    border-right: 4px solid #cbc4b3;
     z-index: 2;
     }
-    
+
+/*    
 #about {
     margin-left: 150px;
     width: 689px;
@@ -128,28 +131,51 @@ body > div {
     padding: 0 20px;
     border-left: 1px solid #bbb;
     }
+*/
 
+#header {
+	background: rgb(250,247,243);
+	position: absolute;
+	top: 0; 
+	left: 0;
+	height: 40px;
+	width:330px;
+	padding: 8px;
+	font-size: 18pt;
+	font-weight: 800;
+	text-align: center;
+	}
+	
+#header .subtitle {
+	font-weight: 500;
+	font-style: italic;
+}
+	
 .layers {
     position: absolute;
-    width: 120px;
-    left: 10px;
-    top: 80px;
+    width: 330px;
+    left: 0px;
+    top: 56px;
     }
     
 .layers a {
     padding: 10px;
-    margin: 1px 0;
-    border-left: 5px solid #fff;
+    /*border-left: 5px solid #fff;*/
+    border-top: 1px solid #cbc4b3;
+    border-bottom: 1px solid #cbc4b3;
+    border-left: 1px solid #cbc4b3;
     background: white;
+    text-align: center;
     color: #333;
     }
     
 .layers a:hover, .layers a:focus, .layers a.active {
-    border-left: 5px solid #333;
-    background: #2da0ef;
+    /*border-left: 5px solid #333;*/
+    background: #555;
     color: white;
     }
 
+/*   Use for a second set of layer buttons
 .layers#crime {top: 220px;}
 
 #crime.layers a:hover, #crime.layers a:focus, #crime.layers a.active {
@@ -157,12 +183,12 @@ body > div {
     background: #e34f3f;
     color: white;
     }
+*/
     
 .layers a {
 	font: 1em/1.5em 'OswaldBook',  "Arial Narrow", sans-serif;
-    width: 113px;
+    width: 89px;
     float: left;
-    margin-right: 20px;
     }
 
 #search {

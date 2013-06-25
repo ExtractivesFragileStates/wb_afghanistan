@@ -1,11 +1,8 @@
 var TileJSONs = [
-    'http://a.tiles.mapbox.com/v3/examples.map-20v6611k,mapbox.dc-property-values.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-building.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-construction.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-crime.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-robbery.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-theft.jsonp',
-    'http://a.tiles.mapbox.com/v3/mapbox.dc-crime-auto.jsonp'
+	'http://a.tiles.mapbox.com/v3/helsinki.afghanistan_primary_resources.jsonp',
+	'http://a.tiles.mapbox.com/v3/helsinki.afghanistan_aoi.jsonp',
+	'http://a.tiles.mapbox.com/v3/helsinki.afghanistan_dev.jsonp',
+	'http://a.tiles.mapbox.com/v3/helsinki.afghanistan_acled.jsonp',
 ];
 
 $('#map').mapbox(TileJSONs, function(map, tiledata) {
@@ -15,9 +12,6 @@ $('#map').mapbox(TileJSONs, function(map, tiledata) {
     map.getLayerAt(1).named('building');
     map.getLayerAt(2).named('construction');
     map.getLayerAt(3).named('crime');
-    map.getLayerAt(4).named('robbery');
-    map.getLayerAt(5).named('theft');
-    map.getLayerAt(6).named('auto');
 
     // Don't composite base layer with other layers
     map.getLayer('base').composite(false);
@@ -26,20 +20,16 @@ $('#map').mapbox(TileJSONs, function(map, tiledata) {
     map.disableLayer('building');
     map.disableLayer('construction');
     map.disableLayer('crime');
-    map.disableLayer('robbery');
-    map.disableLayer('theft');
-    map.disableLayer('auto');
 
     // Set initial latitude, longitude and zoom level
     map.setCenterZoom({
-        lat: 38.90900,
-        lon: -77.01439
-    }, 13);
-
+        lat: 34,
+        lon: 64
+    }, 6);
     // Set minimum and maximum zoom levels
-    map.setZoomRange(0, 15);
+    map.setZoomRange(4, 10);
 
     // Enable share control
-    mapbox.share().map(map).add();
+    // mapbox.share().map(map).add();
 
 });

@@ -1,3 +1,4 @@
+<!--   Afghanistan v2.0   -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,27 +19,35 @@
     <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.3/mapbox.uncompressed.js'></script>
     <script src="ext/jquery.min.js"></script>
     <script src="ext/mapbox.jquery.js"></script>
-    <script src="ext/mapbox.share.js"></script>
+    <!--<script src="ext/mapbox.share.js"></script>-->
 
   </head>
 
   <!-- Here we use `data-map` to specify the id of the div the map is in -->
   <body data-map="map">
-    <div id="content">
+	<div id="content">
+
+		<div id='header'>
+			<div>Afghanistan's Mineral Wealth</div>
+			<div class='subtitle' style='display:none;'>...</div>
+		</div>
+
+		<!-- Layer switcher -->
+		<div id="projects" class="layers" data-control="switcher">
+			  <a href="#building" data-zoom="14" data-lat="38.91060" data-lon="-77.00126">Development</a>
+			  <a href="#construction" data-zoom="12">Extractives</a>
+			  <a href="#crime" data-zoom="13">Fragility</a>
+		</div>
+
+		<!--  Additional Buttons
+		<div id="crime" class="layers" data-control="switcher">
+			  <a href="#robbery">Robbery, 2011</a>
+			  <a href="#theft">Theft, 2011</a>
+			  <a href="#auto">Theft from Auto, 2011</a>
+		</div>
+		-->
     </div>
 
-    <!-- Layer switcher -->
-    <div id="projects" class="layers" data-control="switcher">
-      <a href="#building" data-zoom="14" data-lat="38.91060" data-lon="-77.00126">Building Permits, 2011</a>
-      <a href="#construction" data-zoom="12">City Construction Projects, 2011</a>
-    </div>
-
-    <div id="crime" class="layers" data-control="switcher">
-      <a href="#crime" data-zoom="13">Total Crime, 2011</a>
-      <a href="#robbery">Robbery, 2011</a>
-      <a href="#theft">Theft, 2011</a>
-      <a href="#auto">Theft from Auto, 2011</a>
-    </div>
 
     <div id="map" class="map">
       <div class="map-legends">
