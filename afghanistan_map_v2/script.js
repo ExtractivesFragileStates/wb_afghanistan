@@ -30,6 +30,6 @@ $('#map').mapbox(TileJSONs, function(map, tiledata) {
     map.setZoomRange(4, 10);
 
     // Enable share control
-    // mapbox.share().map(map).add();
+    mapbox.share().map(map).add();
 
 });

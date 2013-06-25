@@ -118,7 +118,7 @@ body > div {
 	overflow-x:hidden;
 	overflow-y:auto;
 	background:rgb(250,247,243);
-	background:rgba(250,247,243,0.8);
+	background:rgba(250,247,243,0.7);
     border-right: 4px solid #cbc4b3;
     z-index: 2;
     }
@@ -255,6 +255,7 @@ form.geocode.loading input[type=submit] {
 a.zoomer {
 	position: absolute;
     top: 10px;
+    left: 345px; /*CHECK!! only display zoom out button*/
     }
 
 /* Map */
@@ -330,9 +331,9 @@ a.zoomer {
 .map-legends {
     left: auto;
     right: 10px;
-    height: 125px;
+    /*height: 125px;  default to auto?*/
     overflow-x: hidden;
-    bottom: 215px;
+    bottom: 10px;
     font-size: 11px;
 	font: .9em/1.5em 'OpenSans', sans-serif;
     }
@@ -348,6 +349,68 @@ a.zoomer {
 .map-legends .scale img { 
     float: left; 
     }
+    
+
+/* start my legend css */
+.map-legend {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #faf7f3;
+    width: 265px;
+}
+
+.map-legend .title {
+    color: #624d15;
+    font-weight: 500;
+    font-size: 18pt;
+    text-align: center;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #cbc4b3;
+    margin-bottom: 2px;
+}
+
+  .map-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    padding: 0;
+    float: left;
+    text-align:right;
+    list-style: none;
+    }
+  .map-legend .legend-scale ul li {
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    }
+  .map-legend ul.legend-labels li .type {
+    display: block;
+    float: right;
+    height: 18px;
+    width: 70px;
+    font-size: 90%;
+    text-align: center;
+    }
+  .map-legend ul.legend-labels li img {
+    display: block;
+    float: right;
+    height: 18px;
+    width: 70px;
+    }
+  .map-legend ul.legend-labels li .mineral {
+    margin-right: 4px;
+    font-size: 90%;
+    }
+  .map-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    }
+  .map-legend a {
+    color: #777;
+    }
+/* end my legend css */
+
+
 
 .map-legend {
     padding: 10px;
@@ -399,6 +462,7 @@ a.zoomer {
 
 .share {
     top: 45px;
+    left: 345px !important;
     z-index: 2;
     }
     
