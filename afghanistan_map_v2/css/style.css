@@ -111,7 +111,7 @@ body > div {
 
 #content {
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 0;
 	bottom:0;
 	width:330px;
@@ -190,6 +190,14 @@ body > div {
     width: 89px;
     float: left;
     }
+    
+.text {
+	position: absolute;
+	top: 100px;
+	padding: 10px;
+	font-size: 9pt;
+	
+	}
 
 #search {
     height: 30px;
