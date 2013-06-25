@@ -1,0 +1,82 @@
+<!--   Afghanistan v1.0   -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css' rel='stylesheet' />
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="mineral_legend.css">
+  <link rel="stylesheet" type="text/css" href="mineral_tooltip.css">
+  
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+</head>
+
+
+<body>
+
+<!--logo
+<div id='logo'>
+	<img src='http://www.wilsoncenter.org/sites/default/files/u1662/WWC_CEF_black%20%282%29.jpg' />
+</div>
+-->
+
+
+<!--map element-->
+<div id='map'></div>
+
+
+<!--legend element-->
+<div id='legend-content' style='display: none;'>
+  <div class='title'>Areas of Interest</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span class='mineral'></span><span class='type'>Permissive</span><span class='type'>Favorable</span><span class='type'>Prospective</span></li>
+      <li><span class='mineral'>REE</span><img class='first'><img class='second'><img class='third'></li>
+      <li><span class='mineral'>Gold</span><img class='first'><img class='second'><img class='third'></li>
+      <li><span class='mineral'>Copper</span><img class='first'><img class='second'><img class='third'></li>
+      <li><span class='mineral'>Iron</span><img class='first'><img class='second'><img class='third'></li>
+      <li><span class='mineral'>Tin</span><img class='first'><img class='second'><img class='third'></li>
+    </ul>
+  </div>
+  <div class='legend-source'>Source: <a href="#link to source">USGS</a></div>
+</div>
+
+
+<!--text-->
+<div id='header'>
+	<div>...hidden...</div>
+	<div class='subtitle'>...</div>
+</div>
+
+<div class='text'>
+	<div class='title'>Afghanistan's Mineral Wealth</div>
+	<div class='subtitle'></div>
+
+	<div class='summary'>
+		<p>Afghanistan is rich in natural resources boasting over 400 different possibilities for extraction (both explored and unexplored). Yet, since the 1950’s only 20% of these minerals have been systematically explored. Three that have been and have the highest economic potential are copper, oil, and gas. Afghanistan has the second largest copper reserves in the world at 45 million tons valued at $43 billion (US) - this being it’s first major mining investment.</p>
+		<p>Mineral extraction plays a strong role in Afghanistan’s National Development Strategy and its goals to improve security, reduce poverty, and strengthen governance. Mining is set to be an alternative source of employment in some poppy regions. As of 2012, Afghanistan produces 64% of the world’s opium on roughly 154,000 hectares of land, with 95% of the cultivation in the most insecure provinces. Seventy-eight percent of Afghanistan’s labor force comes from agriculture, including opium cultivation, while only 5.7 % comes from industry.</p>
+		<p>In Afghanistan’s largely employed agricultural sector, 79% of opium cultivating villages receive agricultural assistance as opposed to only 69% of non-opium cultivating villages. Discrepancies also exist in income from agriculture. Farmer household net annual income per hectare from non-opium cultivation is roughly $3,300 (US) while net annual income per hectare from opium cultivation is roughly $5,200 (US).</p>
+	</div>
+	
+	<div class='attribution' style='display:none'>
+		<em>...</em>
+	</div>
+	
+	<div class='legend-source'>
+		<b>Source:</b> <a href='www.google.com' target='_blank'>USGS</a>; <a href='www.google.com' target='_blank'>Afghan Ministry of Mines</a>; <a href='www.google.com' target='_blank'>World Bank</a>
+	</div>
+	
+</div>
+
+
+<!--javascript source-->
+<script type="text/javascript" src="map.js"></script>
+</body>
+
+
+</html>

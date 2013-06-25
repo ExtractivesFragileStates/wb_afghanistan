@@ -1,0 +1,117 @@
+/*   V2   */
+
+body { margin:0; padding:0; }
+
+#map {
+	  position:absolute;
+	  top:0;
+	  right:0;
+	  bottom:0;
+	  left:0;
+	  z-index:0;
+	  color: #624d15;
+	  background: #cbc4b3; /* set background for load */
+  }
+
+#header {
+	background: rgb(250,247,243);
+	position: absolute;
+	top: 0; 
+	right: 0;
+	height: 70px;
+	padding: 20px;
+	width:330px;
+	font-size: 22px;
+	font-weight: 800;
+	text-align: center;
+	display: none;  /*  header hidden for time being  */
+}
+
+#header .subtitle {
+	font-weight: 500;
+	font-style: italic;
+}
+
+.text{
+	position:absolute;
+	top: 0px;
+	left: 0;
+	bottom:0;
+	width:330px;
+	background:rgb(250,247,243);
+	background:rgba(250,247,243,0.8);
+	overflow-x:hidden;
+	overflow-y:auto;
+	padding: 10px 12px;
+	padding-bottom: 0;
+}
+
+.text .title {
+	text-align: center;
+	font-size: 18pt;
+	font-weight: 800;
+	padding: 4px 0px 4px 0px;
+}
+
+.text .subtitle {
+	text-align: center;
+	font-size: 18px;
+	font-style: italic;
+	padding-bottom: 4px;
+	border-bottom: 2px solid #cbc4b3;
+	margin-bottom: 8px;
+}
+
+.text .summary {
+	padding: 0px 0px 0px 8px;
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.text .summary p {
+	font-size: 10pt;
+}
+
+.text .corridor{
+	padding: 4px;
+	border-bottom: 1px solid #EEEEEE;
+	margin-top: 4px;
+}
+
+.text .corridor .corridor_header{
+	text-align: center;
+	font-size: 14px;
+}
+
+.text .corridor p{
+	font-size: 13px;
+}
+
+.text .details{
+	padding: 0px 16px 0px 16px;
+	border-bottom: 2px solid #cbc4b3;
+}
+
+.text .details p{
+	font-size: 13px;
+}
+
+.text .attribution{
+	font-size: 11px;
+	padding: 8px 0px 0px 14px;
+}
+
+.text .legend-source{
+	font-size: 10px;
+	text-decoration: none;
+	padding-left: 8px;
+}
+
+a {
+	color: #85c5d4;
+}
+
+a:hover{
+	text-decoration: underline;
+	color: #AAAAAA;
+}
+
