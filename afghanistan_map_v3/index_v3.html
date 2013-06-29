@@ -1,0 +1,91 @@
+<!--   Afghanistan 3.0   -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Afghanistan's Mineral Wealth</title>
+	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.css' rel='stylesheet' />
+	<!--<link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />-->
+	<!--[if lte IE 8]>
+	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.ie.css' rel='stylesheet' />
+	<![endif]-->
+	<link rel="stylesheet" href="fonts/fonts.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/mapbox.share.css" type="text/css" />
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  
+	<script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.js'></script>
+	<!--<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>-->
+    <script src="ext/jquery.min.js"></script>
+    <script src="ext/mapbox.jquery.js"></script>
+    <script src="ext/mapbox.share.js"></script>
+</head>
+
+
+<body>
+  
+
+<div id='map'></div>
+
+<div id="content">
+
+	<div id='header'>
+		<a id='refresh' href='#' style='color:#333'>
+		<div>Afghanistan's Mineral Wealth</div>
+		<div class='subtitle' style='display:none;'>...</div>
+		</a>
+	</div>
+
+	<!-- Layer switcher -->
+	<div id="map-ui" class="layers">
+		  <a href="#" id="helsinki.afghanistan_dev">Development</a>
+		  <a href="#" id="helsinki.afghanistan_aoi">Extractives</a>
+		  <a href="#" id="helsinki.afghanistan_acled">Fragility</a>
+	</div>
+
+	<!--  Additional Buttons
+	<div id="crime" class="layers" data-control="switcher">
+		  <a href="#robbery">Robbery, 2011</a>
+		  <a href="#theft">Theft, 2011</a>
+		  <a href="#auto">Theft from Auto, 2011</a>
+	</div>
+	-->
+	
+	<div id='text'>
+		<!-- map text inserted here-->
+	</div>
+
+	<div class='attribution' style='display:none'>
+		<em>...</em>
+	</div>
+
+	<div class='content-source'>
+		<b>Source:</b> <a href='www.google.com' target='_blank'>USGS</a>; <a href='www.google.com' target='_blank'>Afghan Ministry of Mines</a>; <a href='www.google.com' target='_blank'>World Bank</a>
+	</div>
+
+</div>
+
+
+
+<div id='legend-content' style='display:none'>
+	<div class='title'>Areas of Interest</div>
+		<div class='legend-scale'>
+			<ul class='legend-labels'>
+			  <li><span class='mineral'></span><span class='type'>Permissive</span><span class='type'>Favorable</span><span class='type'>Prospective</span></li>
+			  <li><span class='mineral'>REE</span><img class='first'><img class='second'><img class='third'></li>
+			  <li><span class='mineral'>Gold</span><img class='first'><img class='second'><img class='third'></li>
+			  <li><span class='mineral'>Copper</span><img class='first'><img class='second'><img class='third'></li>
+			  <li><span class='mineral'>Iron</span><img class='first'><img class='second'><img class='third'></li>
+			  <li><span class='mineral'>Tin</span><img class='first'><img class='second'><img class='third'></li>
+			</ul>
+		</div>
+		<div class='legend-source'>Source: <a href="#link to source">USGS</a></div>
+	</div>
+</div>
+
+
+
+
+    <script src="script_v33.js"></script>
+  </body>
+</html>
