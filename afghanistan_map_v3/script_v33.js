@@ -53,7 +53,8 @@ map.addLayer(L.mapbox.tileLayer('helsinki.afghanistan_primary_resources'));
 //	}
 	
 
-
+// Initialize a Layer Group
+group = L.layerGroup().addTo(map);
 
 // Layer Switcher
 var layers = document.getElementById('map-ui').getElementsByTagName('a');
@@ -67,25 +68,26 @@ for (var i = 0; i < layers.length; i++) {
         	//doesn't work b/c can't get the layer element to remove other element's associated tileLayer objects
 		for (var i = 0; i < layers.length; i++){
 			if(layers[i].className == 'active'){
+				group.clearLayers();
+				//look at: map.reset(); map.remove()
 				//map.removeLayer(L.mapbox.tileLayer(layers[i].id));
 				//map.removeLayer(L.mapbox.gridLayer(layers[i].id));
 				//map.removeControl(L.mapbox.gridControl(L.mapbox.gridLayer(layers[i].id)));
-				
-				map.setView
 				
 				layers[i].className = '';
 			}
 		}
 		
 		//add new layer [is there a difference bt. these two?]
-		map.addLayer(L.mapbox.tileLayer(this.id));
+		//map.addLayer(L.mapbox.tileLayer(this.id));
 		//L.mapbox.tileLayer(this.id).addTo(map)
+		group.addLayer(L.mapbox.tileLayer(this.id));
 		this.className = 'active';
 		
 		//add interaction
-		var gridLayer = L.mapbox.gridLayer(this.id);
-		map.addLayer(gridLayer);
-		map.addControl(L.mapbox.gridControl(gridLayer));
+		//var gridLayer = L.mapbox.gridLayer(this.id);
+		//map.addLayer(gridLayer);
+		//map.addControl(L.mapbox.gridControl(gridLayer));
 		
 		//change content in #text element
 		document.getElementById('text').innerHTML = this.innerHTML;
