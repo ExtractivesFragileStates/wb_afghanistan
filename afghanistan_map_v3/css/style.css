@@ -151,6 +151,10 @@ body { margin:0; padding:0; }
 	text-align: center;
 	}
 	
+#header a {
+	color: #333;
+	}
+	
 #header .subtitle {
 	font-weight: 500;
 	font-style: italic;
@@ -173,11 +177,14 @@ body { margin:0; padding:0; }
     text-align: center;
     color: #333;
     }
-    
-.layers a:hover, .layers a:focus, .layers a.active {
-    /*border-left: 5px solid #333;*/
-    background: #555;
-    color: white;
+
+/* BUG: #header a:hover color: white only works when mousing over a element, not when mousing over containing #header div. */
+#header a:hover, #header a:focus, .layers a:hover, .layers a:focus, .layers a.active {
+	color: white;
+	}
+     
+#header:hover, #header:focus, .layers a:hover, .layers a:focus, .layers a.active {
+    background-color: #555;
     }
 
 /*   Use for a second set of layer buttons
