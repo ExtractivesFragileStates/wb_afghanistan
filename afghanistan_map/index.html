@@ -1,4 +1,4 @@
-<!--   Afghanistan 3.0   -->
+<!--   afghanistan  v1.0 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,41 +25,47 @@
 <body>
   
 
+
+
+
 <div id='map'></div>
 
 <div id="content">
 
-	<div id='header'>
-		<a href='#' id='refresher' style = 'display:block'>
-		<div>Afghanistan's Mineral Wealth</div>
-		<div class='subtitle' style='display:none;'>...</div>
-		</a>
-	</div>
-
-	<!-- Layer switcher -->
-	<div id="map-ui" class="layers">
-		  <a href="#" id="helsinki.afghanistan_dev">Development</a>
-		  <a href="#" id="helsinki.afghanistan_aoi">Extractives</a>
-		  <a href="#" id="helsinki.afghanistan_acled">Fragility</a>
-	</div>
-
-	<!--  Additional Buttons
-	<div id="crime" class="layers" data-control="switcher">
-		  <a href="#robbery">Robbery, 2011</a>
-		  <a href="#theft">Theft, 2011</a>
-		  <a href="#auto">Theft from Auto, 2011</a>
-	</div>
-	-->
+	<div id='header' class='refresher'>Extractives in the DRC</div>
 	
-	<div id='text'>
-		<!-- map text inserted here-->
+		
+	<!-- Layer switcher -->
+	<div id="map-ui" class="three-wide switcher-box">
+		  <a href="#" id="development" class="dropdown">Development</a>
+		  <a href="#" id="extractives" class="dropdown">Extractives</a>
+		  <a href="#" id="conflict" class="dropdown">Fragility</a>
 	</div>
+	
+	<div id="development-dropdown" class="two-wide switcher-box dropdown-menu">
+		  <a href="#" id="priorities" class="switcher">Priorities</a>
+		  <a href="#" id="education" class="switcher">Education</a>
+	</div>
+	
+	<div id="extractives-dropdown" class="two-wide switcher-box dropdown-menu">
+		  <a href="#" id="aoi" class="switcher">USGS AOIs</a>
+		  <a href="#" id="ong" class="switcher">Oil/Gas</a>
+	</div>
+	
+	<div id="conflict-dropdown" class="two-wide switcher-box dropdown-menu">
+		  <a href="#" id="acled" class="switcher">ACLED</a>
+		  <a href="#" id="opium" class="switcher">Opium</a>
+	</div>
+	
+	
+	<!-- Text -->
+	<div id='text'></div>
 
 	<div class='attribution' style='display:none'>
 		<em>...</em>
 	</div>
 
-	<div class='content-source'>
+	<div class='source' style='display:none'>
 		<b>Source:</b> <a href='www.google.com' target='_blank'>USGS</a>; <a href='www.google.com' target='_blank'>Afghan Ministry of Mines</a>; <a href='www.google.com' target='_blank'>World Bank</a>
 	</div>
 
@@ -67,21 +73,112 @@
 
 
 
-<div id='legend-content' style='display:none'>
+
+
+
+
+
+<!-- Legends -->
+
+<!-- Development Priorities - vertical categorized -->
+<div id='devPrioritiesLegend' style='display:none'>
+<div class='map-legendCategorized'>
+	<div class='title'>Development Priorities</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#B8A6CE;'></span>Security</li>
+			<li><span style='background:#F4CCC0;'></span>Employment</li>
+			<li><span style='background:#BBDFDD;'></span>Infrastructure</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+</div>
+</div>
+
+<!-- Education - vertical categorized -->
+<div id='educationLegend' style='display:none'>
+<div class='map-legendCategorized'>
+	<div class='title'>Barriers to Education<br>Security</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#ECE0EE;'></span>low security risk</li>
+			<li><span style='background:#DAC4D8;'></span>med low security risk</li>
+			<li><span style='background:#E7B7D5;'></span>med high security risk</li>
+			<li><span style='background:#D297B0;'></span>high security risk</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+</div>
+</div>
+
+<!-- AOI Legend - tabel -->
+<div id='aoiLegend' style='display:none'>
+<div class='map-legendTable'>
 	<div class='title'>Areas of Interest</div>
-		<div class='legend-scale'>
-			<ul class='legend-labels'>
-			  <li><span class='mineral'></span><span class='type'>Permissive</span><span class='type'>Favorable</span><span class='type'>Prospective</span></li>
-			  <li><span class='mineral'>REE</span><img class='first'><img class='second'><img class='third'></li>
-			  <li><span class='mineral'>Gold</span><img class='first'><img class='second'><img class='third'></li>
-			  <li><span class='mineral'>Copper</span><img class='first'><img class='second'><img class='third'></li>
-			  <li><span class='mineral'>Iron</span><img class='first'><img class='second'><img class='third'></li>
-			  <li><span class='mineral'>Tin</span><img class='first'><img class='second'><img class='third'></li>
-			</ul>
-		</div>
-		<div class='legend-source'>Source: <a href="#link to source">USGS</a></div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span class='mineral'></span><span class='type'>Permissive</span><span class='type'>Favorable</span><span class='type'>Prospective</span></li>
+			<li><span class='mineral'>REE</span><img><img><img></li>
+			<li><span class='mineral'>Gold</span><img><img><img></li>
+			<li><span class='mineral'>Copper</span><img><img><img></li>
+			<li><span class='mineral'>Iron</span><img><img><img></li>
+			<li><span class='mineral'>Tin</span><img><img><img></li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">USGS</a></div>
 	</div>
 </div>
+</div>
+
+<!-- ACLED Legend - horizontal graduated -->
+<div id='acledLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='title'>Conflict Density</div>
+	<div class='legend-scale six-wide'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FFFFFF;'></span>0</li>
+			<li><span style='background:#FEF0D9;'></span>10</li>
+			<li><span style='background:#FDCC8A;'></span>50</li>
+			<li><span style='background:#FC8D59;'></span>100</li>
+			<li><span style='background:#E34A33;'></span>250</li>
+			<li><span style='background:#B30000;'></span>300</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+</div>
+</div>
+
+<!-- Opium Legend - horizontal graduated -->
+<div id='opiumLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='title'>Opium Cultivation</div>
+	<div class='legend-scale three-wide'>
+		<ul class='legend-labels'>
+			<li><span style='background:#E0EEDD;'></span>low</li>
+			<li><span style='background:#D2E7CE;'></span>medium</li>
+			<li><span style='background:#ACD4AD;'></span>high</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+</div>
+</div>
+
+<!-- Oil and Natl Gas Legend - vertical categorized -->
+<div id='ongLegend' style='display:none'>
+<div class='map-legendCategorized'>
+	<div class='title'>Oil and Natural Gas</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FCF0C2;'></span>Investment in Oil/Natl Gas</li>
+			<li><span style='background:#FCBEC8;'></span>Population Density</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Afghan Ministry of Mines</a></div>
+</div>
+</div>
+
+
+
 
 
 
