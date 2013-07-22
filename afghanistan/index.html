@@ -1,0 +1,260 @@
+<!--   afghanistan  v2.0 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Afghanistan's Mineral Wealth</title>
+	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.css' rel='stylesheet' />
+	<!--<link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />-->
+	<!--[if lte IE 8]>
+	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.ie.css' rel='stylesheet' />
+	<![endif]-->
+	<link rel="stylesheet" href="fonts/fonts.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/mapbox.share.css" type="text/css" />
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  
+	<script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.js'></script>
+	<!--<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>-->
+    <script src="ext/jquery.min.js"></script>
+    <script src="ext/mapbox.jquery.js"></script>
+    <script src="ext/mapbox.share.js"></script>
+</head>
+
+
+<body>
+  
+
+
+
+
+<div id='map'></div>
+
+<div id="content">
+
+	<div id='header' class='refresher'>Afghanistan's Mineral Wealth</div>
+	
+		
+	<!-- Layer switcher -->
+	<div id="map-ui" class="three-wide switcher-box">
+		  <a href="#" id="development" class="dropdownAndRadio">Development</a>
+		  <a href="#" id="extractives" class="dropdown">Extractives</a>
+		  <a href="#" id="conflict" class="dropdown">Fragility</a>
+	</div>
+	
+	<div id="development-dropdown" class="three-wide switcher-box dropdown-menu">
+		  <a href="#" id="priorities" class="radioswitcher">Priorities</a>
+		  <a href="#" id="education" class="radioswitcher">Education</a>
+		  <a href="#" id="poverty" class="radioswitcher">Poverty</a>
+
+	</div>
+	
+	
+	<div id="extractives-dropdown" class="three-wide switcher-box dropdown-menu">
+		  <a href="#" id="hymap" class="switcher">Mineralogy</a>
+		  <a href="#" id="copper" class="switcher">Copper</a>
+		  <a href="#" id="ong" class="switcher">Oil/Gas</a>
+	</div>
+	
+	<div id="conflict-dropdown" class="two-wide switcher-box dropdown-menu">
+		  <a href="#" id="ndi" class="switcher">Security</a>
+		  <a href="#" id="opium" class="switcher">Opium</a>
+	</div>
+	
+	
+	<!-- Text -->
+	<div id='text'></div>
+
+	<div class='attribution' style='display:none'>
+		<em>...</em>
+	</div>
+
+	<div class='source' style='display:none'>
+		<b>Source:</b> <a href='www.ndi.org' target='_blank'>National Democratic Institute</a>; <a href='www.google.com' target='_blank'>Afghan Ministry of Mines</a>; <a href='www.google.com' target='_blank'>World Bank</a>
+	</div>
+
+</div>
+
+
+<!-- radiomenus -->
+<!-- priorities-radiomenu -->
+<div id='priorities-radiomenu' class='radiomenu' style='display:none'>
+    <span class='radiomenuName'>Development Priorities</span>
+    <div id='priorities-radios' class='radiolist'>
+        <!-- add the layers below -->
+        <div id='priorities' class='radioBut'></div><span class='radioSpan'>Development Priorities</span><br/>
+        <div id='ruralpopulation' class='radioBut'></div><span class='radioSpan'>Rural Population</span>
+    </div>
+</div>
+
+<!-- education-radiomenu -->
+<div id='education-radiomenu' class='radiomenu' style='display:none'>
+    <span class='radiomenuName'>Education/Literacy</span>
+    <div id='education-radios' class='radiolist'>
+        <!-- add the layers below -->
+        <div id='education' class='radioBut'></div><span class='radioSpan'>Education Barriers</span><br/>
+        <div id='femalelit' class='radioBut'></div><span class='radioSpan'>Female Literacy</span>
+    </div>
+</div>
+
+<!-- poverty-radiomenu -->
+<div id='poverty-radiomenu' class='radiomenu' style='display:none'>
+    <span class='radiomenuName'>Poverty/Unemployment</span>
+    <div id='poverty-radios' class='radiolist'>
+        <!-- add the layers below -->
+        <div id='poverty' class='radioBut'></div><span class='radioSpan'>Poverty</span><br/>
+        <div id='underemployment' class='radioBut'></div><span class='radioSpan'>Unemployment</span>
+    </div>
+</div>
+
+
+
+<!-- Legends -->
+
+<!-- Development Priorities - vertical categorized -->
+   <div id='devPrioritiesLegend' style='display:none'>
+	<div class='map-legendVerticalCategorized'>
+		<div class='legend-name'>
+			<div class='legend-title'>Primary Development Priorities</div>
+		</div>
+		<div class='legend-scale'>
+			<ul class='legend-labels'>
+				<li><span style='background:#B8A6CE;'></span>Security</li>
+				<li><span style='background:#F4CCC0;'></span>Employment</li>
+				<li><span style='background:#BBDFDD;'></span>Infrastructure</li>
+				<li><span style='background:#9CACC3;'></span>High rural population</li>
+				<li><span style='background:#A6C6E0;'></span>Medium rural population</li>
+				<li><span style='background:#C6DFEE;'></span>Low rural population</li>
+				<li><span style='background:#FBFDFE;'></span>Insignificant rural population</li>
+			</ul>
+		</div>
+		<div class='legend-source'>Sources:<br> <a href="http://www.areu.org.af/?Lang=en-US">Afghanistan Research and Evaluation Yearbook</a></div>
+		<br> <a href="http://www.undp.org.af/publications/KeyDocuments/ANDS_Full_Eng.pdf">Afghanistan National Development Strtategy, 2008-2013</a></div>
+	</div>
+</div>
+
+<!-- Education - vertical categorized -->
+<div id='educationLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Education Barriers and Female Literacy</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+		    <li><span style='background:#F6FDF3;'></span>Education Barriers</li>
+		    <li><span style='background:#FFFFFF;'></span>No female literacy</li>
+			<li><span style='background:#FEF7F1;'></span>Low female literacy</li>
+			<li><span style='background:#FDE4CD;'></span>Med low female literacy</li>
+			<li><span style='background:#FDD1B0;'></span>Med high female literacy</li>
+			<li><span style='background:#DBAE9A;'></span>High female literacy</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="http://www.areu.org.af/?Lang=en-US">Afghanistan Research and Evaluation Yearbook</a></div>
+</div>
+</div>
+
+<!-- Poverty - vertical categorized -->
+<div id='povertyLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Poverty and Underemployment</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+		    <li><span style='background:#FEFEFE;'></span>Low poverty</li>
+			<li><span style='background:#FEF4EF;'></span>Medium Low poverty</li>
+			<li><span style='background:#FCDDD1;'></span>Med poverty</li>
+			<li><span style='background:#FBA8A6;'></span>High poverty</li>
+			<li><span style='background:#F7FBF5;'></span>Low underemployment</li>
+			<li><span style='background:#E3F3ED;'></span>Medium low underemployment</li>
+			<li><span style='background:#C3E3C4;'></span>Medium underemployment</li>
+			<li><span style='background:#A7D4B5;'></span>Medium high underemployment</li>
+			<li><span style='background:#98C3A9;'></span>High underemployment</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="http://www.areu.org.af/?Lang=en-US">Afghanistan Research and Evaluation Yearbook</a></div>
+</div>
+</div>
+
+
+<!-- NDI Incidents Legend - horizontal graduated -->
+<div id='ndiLegend' style='display:none'>
+<div class='map-legendVerticalGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Security Incidents</div>
+		<div class='legend-subtitle'>2009 - 2010</div>
+	</div>
+	<div class='legend-scale one-wide'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FF4455;'></span>Incident Report</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+</div>
+</div>
+
+<!-- Opium Legend - horizontal graduated -->
+<div id='opiumLegend' style='display:none'>
+<div class='map-legendVerticalGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Security Incidents and Opium Cultivation</div>
+	</div>
+	<div class='legend-scale three-wide'>
+		<ul class='legend-labels'>
+		    <li><span style='background:#FF4455;'></span>Security Incidents</li>
+			<li><span style='background:#E0EEDD;'></span>Low opium cultivation</li>
+			<li><span style='background:#D2E7CE;'></span>Medium opium cultivation</li>
+			<li><span style='background:#ACD4AD;'></span>High opium cultivation</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Sources:<br> <a href="http://www.ndi.org">National Democratic Institute</a></div><br>
+	        <a href="http://www.nautilus.org">Nautilus Institute for Security and Stability</a></div>
+</div>
+</div>
+
+<!-- Oil and Natl Gas Legend - vertical categorized -->
+<div id='ongLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Copper, Oil, and Natural Gas</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#AA5500;'></span>Investments in Copper</li>
+			<li><span style='background:#FCF0C2;'></span>Investments in Oil/Natl Gas</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">Afghan Ministry of Mines</a></div>
+</div>
+</div>
+
+<!-- Surface Mineral Map - vertical categorized -->
+<div id='hyMapLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Surface Mineralogy</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FA8559;'></span>Goethite</li>
+			<li><span style='background:#B2563C;'></span>Iron</li>
+			<li><span style='background:#73402D;'></span>Alunite</li>
+			<li><span style='background:#FBE38C;'></span>Calcite</li>
+			<li><span style='background:#8596D1;'></span>Ilite</li>
+			<li><span style='background:#2B3574;'></span>Dolomite</li>
+			<li><span style='background:#6E7732;'></span>Kaolinite</li>
+			<li><span style='background:#BAC661;'></span>Chlorite</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">USGS Hyperspectral Imaging Study</a>, 2007</div>
+</div>
+</div>
+
+
+
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
