@@ -1,11 +1,10 @@
-<!--   afghanistan  v1.0 -->
+<!--   Afghanistan -->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
 	<title>Afghanistan's Mineral Wealth</title>
 	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.css' rel='stylesheet' />
-	<!--<link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.css' rel='stylesheet' />-->
 	<!--[if lte IE 8]>
 	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.ie.css' rel='stylesheet' />
 	<![endif]-->
@@ -15,7 +14,6 @@
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   
 	<script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.4/mapbox.js'></script>
-	<!--<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.7/mapbox.js'></script>-->
     <script src="ext/jquery.min.js"></script>
     <script src="ext/mapbox.jquery.js"></script>
     <script src="ext/mapbox.share.js"></script>
@@ -25,36 +23,56 @@
 <body>
   
 
-
-
-
 <div id='map'></div>
 
 <div id="content">
 
-	<div id='header' class='refresher'>Extractives in the DRC</div>
+	<div id='header' class='refresher'>Afghanistan's Mineral Wealth</div>
 	
-		
+
 	<!-- Layer switcher -->
-	<div id="map-ui" class="three-wide switcher-box">
-		  <a href="#" id="development" class="dropdown">Development</a>
-		  <a href="#" id="extractives" class="dropdown">Extractives</a>
-		  <a href="#" id="conflict" class="dropdown">Fragility</a>
+	<!-- note: for any button that runs to two lines, to set inline style='padding: 4px 0 2px 0; line-height: 1.3em;' -->
+	<div id="map-ui" class="four-wide switcher-box">
+		<a href="#" id="demographics" class="dropdown">DEMOGRAPHICS</a>
+		<a href="#" id="development" class="dropdown">DEVELOPMENT</a>
+		<a href="#" id="extractives" class="dropdown">EXTRACTIVES</a>
+		<a href="#" id="conflict" class="dropdown">STRESSES</a>
+	</div>		
+	
+	<div id="demographics-dropdown" class="two-wide switcher-box dropdownMenu">
+	      <a href="#" id="population" class="panelLayerSwitcher">Population Density</a>
+		  <a href="#" id="ethno" class="panelLayerSwitcher">Ethnicity</a>
 	</div>
 	
-	<div id="development-dropdown" class="two-wide switcher-box dropdown-menu">
-		  <a href="#" id="priorities" class="switcher">Priorities</a>
-		  <a href="#" id="education" class="switcher">Education</a>
+	<div id="development-dropdown" class="four-wide switcher-box dropdownMenu">
+	      <a href="#" id="unemployment" class="panelLayerSwitcher">Employment</a>
+		  <a href="#" id="poverty" class="panelLayerSwitcher">Poverty</a>
+		  <a href="#" id="education" class="panelLayerSwitcher">Education</a>
+		  <a href="#" id="watsan" class="panelLayerSwitcher">Health</a>
 	</div>
 	
-	<div id="extractives-dropdown" class="two-wide switcher-box dropdown-menu">
-		  <a href="#" id="aoi" class="switcher">USGS AOIs</a>
-		  <a href="#" id="ong" class="switcher">Oil/Gas</a>
+	<div id="extractives-dropdown" class="two-wide switcher-box dropdownMenu">
+		  <a href="#" id="mineralogy" class="panelLayerSwitcher">Mineralogy</a>
+		  <a href="#" id="aoi" class="panelLayerSwitcher">Mineralized Areas</a>
 	</div>
 	
-	<div id="conflict-dropdown" class="two-wide switcher-box dropdown-menu">
-		  <a href="#" id="acled" class="switcher">ACLED</a>
-		  <a href="#" id="opium" class="switcher">Opium</a>
+	<div id="conflict-dropdown" class="two-wide switcher-box dropdownMenu">
+		  <a href="#" id="acled" class="panelLayerSwitcher">Security</a>
+		  <a href="#" id="idps" class="addMapMenu">IDPs</a>
+	</div>
+
+
+	<!-- Map Menu Checkbox Buttons - insert for permanent checkbox buttons on map top left, above checkbox buttons -->
+	<div class='menu permanentMenu'>
+		<a href="#" id="checkboxMineConcessions" style='padding: 4px 0 2px 0; line-height: 1.3em;'>Mineral<br>Concessions</a>
+		<!-- <a href="#" id="checkboxOilConcessions">Oil Concessions</a> -->
+	</div>
+
+ 
+	<!-- Map Menu Radio Buttons - set style='top:xx' to display box below checkbox buttons -->
+	<div id='idps-menu' class='menu layerMenu' style='top:130px'>
+		<a href="#" id="idps_displaced_12" class="mapRadioMenu">Displaced '12</a>
+		<a href="#" id="idps_origin_12" class="mapRadioMenu">Origin '12</a>
 	</div>
 	
 	
@@ -62,59 +80,155 @@
 	<div id='text'></div>
 
 	<div class='attribution' style='display:none'>
-		<em>...</em>
+		<div>...</div>
 	</div>
 
 	<div class='source' style='display:none'>
-		<b>Source:</b> <a href='www.google.com' target='_blank'>USGS</a>; <a href='www.google.com' target='_blank'>Afghan Ministry of Mines</a>; <a href='www.google.com' target='_blank'>World Bank</a>
+		<div>...</div>
 	</div>
 
 </div>
 
 
 
+<!-- Legend -->
 
-
-
-
-
-<!-- Legends -->
-
-<!-- Development Priorities - vertical categorized -->
-<div id='devPrioritiesLegend' style='display:none'>
-<div class='map-legendCategorized'>
-	<div class='title'>Development Priorities</div>
+<!-- Pop Density Legend - horizontal graduated -->
+<div id='populationLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Population Density (persons / km<sup>2</sup>)</div>
+		<div class='legend-subtitle'>adjusted to match UN totals, '00</div>
+	</div>
 	<div class='legend-scale'>
 		<ul class='legend-labels'>
-			<li><span style='background:#B8A6CE;'></span>Security</li>
-			<li><span style='background:#F4CCC0;'></span>Employment</li>
-			<li><span style='background:#BBDFDD;'></span>Infrastructure</li>
+			<li><span style='background:#FFFFB2;'></span>< 10</li>
+			<li><span style='background:#FED976;'></span>10 - 50</li>
+			<li><span style='background:#FEB24C;'></span>50 - 100</li>
+			<li><span style='background:#FD8D3C;'></span>100 - 200</li>
+			<li><span style='background:#F03B20;'></span>200 - 500</li>
+			<li><span style='background:#BD0026;'></span>500 - 1k</li>
+			<li><span style='background:#6600d8;'></span>1k - 6k</li>
+			<li><span style='background:#FFFFFF; border: 1px solid #dddddd;'></span>6k - 20k</li>
 		</ul>
 	</div>
-	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+	<div class='legend-source'>Source: <a href="http://sedac.ciesin.columbia.edu/data/set/gpw-v3-population-count/data-download">Gridded Population of the World, v3</a>Columbia University, 2005</div>
 </div>
 </div>
 
-<!-- Education - vertical categorized -->
+
+<!-- Ethno-Linguistic Legend - vertical categorized -->
+<div id='ethnoLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Ethno-Linguistic Groups</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#243060;'></span>Aimak</li>
+			<li><span style='background:#8697d1;'></span>Baluchi</li>
+			<li><span style='background:#fae78f; border-color: #CCCCCC;'></span>Brahui</li>
+			<li><span style='background:#5d6223;'></span>Hazara</li>
+			<li><span style='background:#614975;'></span>Kyrgyz</li>
+			<li><span style='background:#9c97c9;'></span>Nuristani</li>
+			<li><span style='background:#bd5f3a;'></span>Pashtun</li>
+			<li><span style='background:#672c2d;'></span>Tajik</li>
+			<li><span style='background:#d8912e;'></span>Turkmen</li>
+			<li><span style='background:#dae57e; border-color: #BBBBBB;'></span>Uzbek</li>
+			<li><span style='background:#7a7b7c;'></span>Other</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#">Name of source</a>, 2011</div>
+</div>
+</div>
+
+
+<!-- Unemployment Legend - horizontal graduated -->
+<div id='unemploymentLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Unemployment Rate (%)<br>'07/'08</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FEF0D9;'></span>< 4</li>
+			<li><span style='background:#FFD9A5;'></span>4 - 8</li>
+			<li><span style='background:#FAA682;'></span>8 - 12</li>
+			<li><span style='background:#E76C5B;'></span>12 - 16</li>
+			<li><span style='background:#D85151;'></span>> 16</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="http://cso.gov.af/en/page/1726">National Risk and Vulnerability Assessment</a>, 2007/8</div>
+</div>
+</div>
+
+
+<!-- Poverty Legend - horizontal graduated -->
+<div id='povertyLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Poverty Rate (%), '05</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FEF0D9;'></span>< 15</li>
+			<li><span style='background:#FFD9A5;'></span>15 - 30</li>
+			<li><span style='background:#FAA682;'></span>30 - 45</li>
+			<li><span style='background:#E76C5B;'></span>45 - 60</li>
+			<li><span style='background:#D85151;'></span>> 60</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="http://cso.gov.af/en/page/1726">National Risk and Vulnerability Assessment</a>, 2007/8</div>
+</div>
+</div>
+
+
+<!-- Education Legend - horizontal graduated -->
 <div id='educationLegend' style='display:none'>
-<div class='map-legendCategorized'>
-	<div class='title'>Barriers to Education<br>Security</div>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Population with Some<br>Schooling (%), '05</div>
+	</div>
 	<div class='legend-scale'>
 		<ul class='legend-labels'>
-			<li><span style='background:#ECE0EE;'></span>low security risk</li>
-			<li><span style='background:#DAC4D8;'></span>med low security risk</li>
-			<li><span style='background:#E7B7D5;'></span>med high security risk</li>
-			<li><span style='background:#D297B0;'></span>high security risk</li>
+			<li><span style='background:#FEF0D9;'></span>< 10</li>
+			<li><span style='background:#FFD9A5;'></span>10 - 20</li>
+			<li><span style='background:#FAA682;'></span>20 - 30</li>
+			<li><span style='background:#E76C5B;'></span>30 - 40</li>
+			<li><span style='background:#D85151;'></span>> 40</li>
 		</ul>
 	</div>
-	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
+	<div class='legend-source'>Source: <a href="http://cso.gov.af/en/page/1726">National Risk and Vulnerability Assessment</a>, 2007/8</div>
 </div>
 </div>
 
-<!-- AOI Legend - tabel -->
+
+<!-- Health Legend - horizontal graduated -->
+<div id='healthLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>Safe Drinking Water<br>(% of households), '05</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FEF0D9;'></span>< 10</li>
+			<li><span style='background:#FFD9A5;'></span>10 - 20</li>
+			<li><span style='background:#FAA682;'></span>20 - 40</li>
+			<li><span style='background:#E76C5B;'></span>40 - 60</li>
+			<li><span style='background:#D85151;'></span>> 60</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="http://cso.gov.af/en/page/1726">National Risk and Vulnerability Assessment</a>, 2007/8</div>
+</div>
+</div>
+
+
+<!-- AOI Legend - table -->
 <div id='aoiLegend' style='display:none'>
 <div class='map-legendTable'>
-	<div class='title'>Areas of Interest</div>
+	<div class='legend-name'>
+		<div class='legend-title'>Mineralized Areas of Interest</div>
+	</div>
 	<div class='legend-scale'>
 		<ul class='legend-labels'>
 			<li><span class='mineral'></span><span class='type'>Permissive</span><span class='type'>Favorable</span><span class='type'>Prospective</span></li>
@@ -123,66 +237,83 @@
 			<li><span class='mineral'>Copper</span><img><img><img></li>
 			<li><span class='mineral'>Iron</span><img><img><img></li>
 			<li><span class='mineral'>Tin</span><img><img><img></li>
+			<li><span class='mineral'>Lithium</span><img><img><img></li>
 		</ul>
 	</div>
-	<div class='legend-source'>Source: <a href="#link to source">USGS</a></div>
+	<div class='legend-source'>Source: <a href="#">USGS, Important Areas for Mineral Investment</a>, 2011</div>
 	</div>
 </div>
 </div>
+
+
+<!-- Surface Mineral Legend - vertical categorized -->
+<div id='hyMapLegend' style='display:none'>
+<div class='map-legendVerticalCategorized'>
+	<div class='legend-name'>
+		<div class='legend-title'>Surface Mineralogy</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FA8559;'></span>Goethite</li>
+			<li><span style='background:#B2563C;'></span>Iron</li>
+			<li><span style='background:#73402D;'></span>Alunite</li>
+			<li><span style='background:#FBE38C;'></span>Calcite</li>
+			<li><span style='background:#8596D1;'></span>Ilite</li>
+			<li><span style='background:#2B3574;'></span>Dolomite</li>
+			<li><span style='background:#6E7732;'></span>Kaolinite</li>
+			<li><span style='background:#BAC661;'></span>Chlorite</li>
+			<li style='margin-top: 8px;'><span style='background:#F8B350;'></span><span class='emphasis' style='border: 0;'>Anomaly</span></li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#link to source">USGS Hyperspectral Imaging Study</a>, 2007</div>
+</div>
+</div>
+
+
+<!-- IDPs Legend - horizontal graduated -->
+<div id='idpLegend' style='display:none'>
+<div class='map-legendGraduated'>
+	<div class='legend-name'>
+		<div class='legend-title'>IDPs by Province</div>
+	</div>
+	<div class='legend-scale'>
+		<ul class='legend-labels'>
+			<li><span style='background:#FEF0D0;'></span>< 3k</li>
+			<li><span style='background:#ffd79b;'></span>3k - 10k</li>
+			<li><span style='background:#ffa675;'></span>10k - 25k</li>
+			<li><span style='background:#f17059;'></span>25k - 50k</li>
+			<li><span style='background:#db3333;'></span>> 50k</li>
+		</ul>
+	</div>
+	<div class='legend-source'>Source: <a href="#">Publication Title</a>, Institute of Studies, 2008</div>
+</div>
+</div>
+
+
 
 <!-- ACLED Legend - horizontal graduated -->
 <div id='acledLegend' style='display:none'>
 <div class='map-legendGraduated'>
-	<div class='title'>Conflict Density</div>
-	<div class='legend-scale six-wide'>
-		<ul class='legend-labels'>
-			<li><span style='background:#FFFFFF;'></span>0</li>
-			<li><span style='background:#FEF0D9;'></span>10</li>
-			<li><span style='background:#FDCC8A;'></span>50</li>
-			<li><span style='background:#FC8D59;'></span>100</li>
-			<li><span style='background:#E34A33;'></span>250</li>
-			<li><span style='background:#B30000;'></span>300</li>
-		</ul>
+	<div class='legend-name'>
+		<div class='legend-title'>Conflict Density, 08-10</div>
+		<div class='legend-subtitle'>Security Events from the<br>ACLED Database/~11km2</div>
 	</div>
-	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
-</div>
-</div>
-
-<!-- Opium Legend - horizontal graduated -->
-<div id='opiumLegend' style='display:none'>
-<div class='map-legendGraduated'>
-	<div class='title'>Opium Cultivation</div>
-	<div class='legend-scale three-wide'>
-		<ul class='legend-labels'>
-			<li><span style='background:#E0EEDD;'></span>low</li>
-			<li><span style='background:#D2E7CE;'></span>medium</li>
-			<li><span style='background:#ACD4AD;'></span>high</li>
-		</ul>
-	</div>
-	<div class='legend-source'>Source: <a href="#link to source">Name</a></div>
-</div>
-</div>
-
-<!-- Oil and Natl Gas Legend - vertical categorized -->
-<div id='ongLegend' style='display:none'>
-<div class='map-legendCategorized'>
-	<div class='title'>Oil and Natural Gas</div>
 	<div class='legend-scale'>
 		<ul class='legend-labels'>
-			<li><span style='background:#FCF0C2;'></span>Investment in Oil/Natl Gas</li>
-			<li><span style='background:#FCBEC8;'></span>Population Density</li>
+			<li><span style='background:#FFFFFF;'></span>0</li>
+			<li><span style='background:#FEF0D0;'></span>1-10</li>
+			<li><span style='background:#ffd79b;'></span>11-50</li>
+			<li><span style='background:#ffa675;'></span>50-100</li>
+			<li><span style='background:#f17059;'></span>100-250</li>
+			<li><span style='background:#db3333;'></span>250+</li>
 		</ul>
 	</div>
-	<div class='legend-source'>Source: <a href="#link to source">Afghan Ministry of Mines</a></div>
+	<div class='legend-source'>Source: <a href="#">Publication Title</a>, Institute of Studies, 2008</div>
 </div>
 </div>
 
 
-
-
-
-
-
-    <script src="script.js"></script>
-  </body>
+	<script src="content.js"></script>
+	<script src="script.js"></script>
+	</body>
 </html>
